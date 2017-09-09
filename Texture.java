@@ -3,7 +3,10 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 public class Texture{
-  public static Texture 
+  public static Texture metal = new Texture("res/metal.png", 64);
+  public static Texture window = new Texture("res/window.png", 64);
+  public static Texture vent = new Texture("res/vent.png", 64);
+  public static Texture console = new Texture("res/console.png", 64);
   public int[] pixels;
   private String loc;
   public final int SIZE;

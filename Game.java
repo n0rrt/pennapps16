@@ -45,10 +45,10 @@ public class Game extends JFrame implements Runnable{
   image = new BufferedImage(1280, 720, BufferedImage.TYPE_INT_RGB);
   pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
   textures = new ArrayList<Texture>();
-  textures.add(Texture.wood);
-  textures.add(Texture.brick);
-  textures.add(Texture.bluestone);
-  textures.add(Texture.stone);
+  textures.add(Texture.metal);
+  textures.add(Texture.window);
+  textures.add(Texture.console);
+  textures.add(Texture.vent);
   camera = new Camera(4.5, 4.5, 1, 0, 0, -.90);
   screen = new Screen(map, mapWidth, mapHeight, textures, 1280, 720);
   addKeyListener(camera);

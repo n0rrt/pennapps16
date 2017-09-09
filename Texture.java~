@@ -26,8 +26,8 @@ public class Texture {
   }
  }
 
- public static Texture vent = new Texture("res/vent.png", 64);
- public static Texture metal = new Texture("res/metal.png", 64);
- public static Texture window = new Texture("res/window.png", 64);
- public static Texture console = new Texture("res/console.png", 64);
+ public static Texture wood = new Texture("res/vent.png", 64);
+ public static Texture brick = new Texture("res/metal.png", 64);
+ public static Texture bluestone = new Texture("res/window.png", 64);
+ public static Texture stone = new Texture("res/console.png", 64);
 }

@@ -97,7 +97,14 @@ public class Screen{
       int texX = (int)(wallX * (textures.get(texNum).SIZE));
       if(side==0 && rayDirX > 0) texX = textures.get(texNum).SIZE - texX - 1;
       if(side==1 && rayDirY < 0) texX = textures.get(texNum).SIZE - texX - 1;
-    }
+      for(int y=drawStart; y<drawEnd; y++){
+        int texY = (((y*2 - height + lineHeight) << 6) / lineHeight) / 2;
+        int color;
+        if(side==0) color = textures.get(texNum).pixels[texX + (texY * textures.get(texNum).SIZE)];
+        else color = (textures.get(texNum).pixels[texX + (texY * textures.get(texNum).SIZE)]>>1) & 8355711;
+        pixels[x + y*(width)] = color;
+      }
     }
   }
+  return pixels;
 }

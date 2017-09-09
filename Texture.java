@@ -7,6 +7,7 @@ public class Texture {
  public int[] pixels;
  private String loc;
  public final int SIZE;
+ 
 
  public Texture(String location, int size) {
   loc = location;
@@ -21,10 +22,12 @@ public class Texture {
    int w = image.getWidth();
    int h = image.getHeight();
    image.getRGB(0, 0, w, h, pixels, 0, w);
-  } catch (IOException e) {
+  } 
+  catch (IOException e) {
    e.printStackTrace();
   }
  }
+
 
  public static Texture vent = new Texture("res/vent.png", 64);
  public static Texture metal = new Texture("res/metal.png", 64);

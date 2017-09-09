@@ -11,7 +11,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.DataBufferInt;
 public class Game extends JFrame implements Runnable{
-
  private static final long serialVersionUID = 1L;
  public int mapWidth = 15;
  public int mapHeight = 15;
@@ -104,6 +103,7 @@ public class Game extends JFrame implements Runnable{
    render();//displays to the screen unrestricted time
   }
  }
+
  public static void main(String [] args) {
   Game game = new Game();
  }

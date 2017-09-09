@@ -7,6 +7,7 @@ public class Texture {
  public int[] pixels;
  private String loc;
  public final int SIZE;
+ 
 
  public Texture(String location, int size) {
   loc = location;
@@ -17,17 +18,24 @@ public class Texture {
 
  private void load() {
   try {
+   BufferedImage gun = ImageIO.read(new File(loc));
    BufferedImage image = ImageIO.read(new File(loc));
    int w = image.getWidth();
+   int x = gun.getWidth();
    int h = image.getHeight();
+   int y = gun.getHeight();
    image.getRGB(0, 0, w, h, pixels, 0, w);
-  } catch (IOException e) {
+   gun.getRGB(640, 500, x, y, pixels, 0, x);
+  } 
+  catch (IOException e) {
    e.printStackTrace();
   }
  }
 
- public static Texture wood = new Texture("res/vent.png", 64);
- public static Texture brick = new Texture("res/metal.png", 64);
- public static Texture bluestone = new Texture("res/window.png", 64);
- public static Texture stone = new Texture("res/console.png", 64);
+
+ public static Texture vent = new Texture("res/vent.png", 64);
+ public static Texture metal = new Texture("res/metal.png", 64);
+ public static Texture window = new Texture("res/window.png", 64);
+ public static Texture console = new Texture("res/console.png", 64);
+ public static Texture gun = new Texture("res/gun-basic.png", 64);
 }

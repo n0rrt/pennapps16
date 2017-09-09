@@ -17,6 +17,7 @@ public class Game extends JFrame implements Runnable{
   private boolean running;
   private BufferedImage image;
   public int[] pixels;
+  public Screen screen;
   public static int[][] map =
   {
     {1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
@@ -39,6 +40,7 @@ public class Game extends JFrame implements Runnable{
   public Game() {
     thread = new Thread(this);
     image = new BufferedImage(1280, 720, BufferedImage.TYPE_INT_RGB);
+    screen = new Screen(map, mapWidth, mapHeight, textures, 640, 480);
     pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
     setSize(1280, 720);
     setResizable(false);
@@ -85,6 +87,7 @@ public class Game extends JFrame implements Runnable{
       delta = delta + ((now-lastTime) / ns);
       lastTime = now;
       while(delta >= 1) {
+        screen.update(camera, pixels);
         camera.update(map);
         delta--;
       }

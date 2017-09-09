@@ -81,6 +81,7 @@ public class Game extends JFrame implements Runnable{
   }
   Graphics g = bs.getDrawGraphics();
   g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
+  g.setColor(Color.RED);
   g.fillRect(1040,625, 175, 30);
   bs.show();
  }

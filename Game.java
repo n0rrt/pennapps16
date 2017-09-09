@@ -85,14 +85,14 @@ public class Game extends JFrame implements Runnable{
  }
  public void run() {
   long lastTime = System.nanoTime();
-  final double ns = 1000000000.0 / 60.0;//60 times per second
+  final double ns = 1000000000.0 / 60.0;//60fps
   double delta = 0;
   requestFocus();
   while(running) {
    long now = System.nanoTime();
    delta = delta + ((now-lastTime) / ns);
    lastTime = now;
-   while (delta >= 1)//Make sure update is only happening 60 times a second
+   while (delta >= 1)
    {
     //handles all of the logic restricted time
     screen.update(camera, pixels);

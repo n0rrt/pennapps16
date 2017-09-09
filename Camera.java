@@ -1,6 +1,6 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-public class Camera implements Keylistener {
+public class Camera implements KeyListener{
   public double xPos, yPos, xDir, yDir, xPlane, yPlane;
   public boolean left, right, forward, back;
   public final double MOVE_SPEED = .08;
@@ -58,11 +58,13 @@ public class Camera implements Keylistener {
     if(left){
       double oldxDir=xDir;
       xDir=xDir*Math.cos(ROTATION_SPEED) - yDir*Math.sin(ROTATION_SPEED);
-      yDir=oldxDir*Math.sin(ROTATION_SPEED) + yDir*Math.cos(ROTATION_SPEED):
+      yDir=oldxDir*Math.sin(ROTATION_SPEED) + yDir*Math.cos(ROTATION_SPEED);
       double oldxPlane = xPlane;
       xPlane=xPlane*Math.cos(ROTATION_SPEED) - yPlane*Math.sin(ROTATION_SPEED);
       yPlane=oldxPlane*Math.sin(ROTATION_SPEED) + yPlane*Math.cos(ROTATION_SPEED);
     }
     }
+  public void keyTyped(KeyEvent arg0) {
   }
-}
+  }
+

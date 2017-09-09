@@ -5,7 +5,7 @@ public class Screen{
   public int[][] map;
   public int mapWidth, mapHeight, width, height;
   public ArrayList<Texture> textures;
-  public Screen(int[][] m, ArrayList tex, int w, int h){
+  public Screen(int[][] m, int mapW, int mapH, ArrayList<Texture> tex, int w, int h){
     map = m;
     mapWidth = mapW;
     mapHeight = mapH;
@@ -35,8 +35,8 @@ public class Screen{
       double sideDistX;
       double sideDistY;
       //length of ray from one side to next in map
-      double deltaDistX = Math.sqrt(1 + (rayDirY*rayDiry) / (rayDirX*rayDirX));
-      double deltaDisty = Math.sqrt(1 + (rayDirX*rayDirX) / (rayDirY*rayDirY));
+      double deltaDistX = Math.sqrt(1 + (rayDirY*rayDirY) / (rayDirX*rayDirX));
+      double deltaDistY = Math.sqrt(1 + (rayDirX*rayDirX) / (rayDirY*rayDirY));
       double perpWallDist;
       //direction to go in x and y
       int stepX, stepY;
@@ -75,7 +75,7 @@ public class Screen{
       if(side==0)
         perpWallDist = Math.abs((mapX - camera.xPos + (1 - stepX) / 2) / rayDirX);
       else
-        perpWallDist = Math.abes((mapY - camera.yPos + (1 - stepY) / 2) / rayDirY);
+        perpWallDist = Math.abs((mapY - camera.yPos + (1 - stepY) / 2) / rayDirY);
       int lineHeight;
       if(perpWallDist > 0)
          lineHeight = Math.abs((int)(height - perpWallDist));
@@ -107,6 +107,6 @@ public class Screen{
         pixels[x + y*(width)] = color;
       }
     }
+    return pixels;
   }
-  return pixels;
 }

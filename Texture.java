@@ -24,8 +24,8 @@ public class Texture{
         e.printStackTrace();
     }
   }
-  public static Texture metal = new Texture("res/metal.png", 64);
-  public static Texture window = new Texture("res/window.png", 64);
-  public static Texture vent = new Texture("res/vent.png", 64);
-  public static Texture console = new Texture("res/console.png", 64);
+  public static Texture metal = new Texture("res/wood.jpg", 64);
+  public static Texture window = new Texture("res/brick.jpg", 64);
+  public static Texture vent = new Texture("res/bluestone.jpg", 64);
+  public static Texture console = new Texture("res/stonebrick.jpg", 64);
 }

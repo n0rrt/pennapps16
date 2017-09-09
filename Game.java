@@ -1,5 +1,15 @@
 import javax.swing.JFrame;
-
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+import java.awt.image.DataBufferInt;
 public class Game extends JFrame implements Runnable{
  
  private static final long serialVersionUID = 1L;

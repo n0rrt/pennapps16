@@ -5,7 +5,7 @@ public class Screen {
  public int[][] map;
  public int mapWidth, mapHeight, width, height;
  public ArrayList<Texture> textures;
- 
+
  public Screen(int[][] m, int mapW, int mapH, ArrayList<Texture> tex, int w, int h) {
   map = m;
   mapWidth = mapW;
@@ -14,7 +14,7 @@ public class Screen {
   width = w;
   height = h;
  }
- 
+
  public int[] update(Camera camera, int[] pixels) {
   for(int n=0; n<pixels.length/2; n++) {
    if(pixels[n] != Color.DARK_GRAY.getRGB()) pixels[n] = Color.DARK_GRAY.getRGB();
@@ -22,7 +22,7 @@ public class Screen {
   for(int i=pixels.length/2; i<pixels.length; i++){
    if(pixels[i] != Color.gray.getRGB()) pixels[i] = Color.gray.getRGB();
   }
-     
+
      for(int x=0; x<width; x=x+1) {
    double cameraX = 2 * x / (double)(width) -1;
       double rayDirX = camera.xDir + camera.xPlane * cameraX;
@@ -85,7 +85,7 @@ public class Screen {
       if(side==0)
        perpWallDist = Math.abs((mapX - camera.xPos + (1 - stepX) / 2) / rayDirX);
       else
-       perpWallDist = Math.abs((mapY - camera.yPos + (1 - stepY) / 2) / rayDirY); 
+       perpWallDist = Math.abs((mapY - camera.yPos + (1 - stepY) / 2) / rayDirY);
       //Now calculate the height of the wall based on the distance from the camera
       int lineHeight;
       if(perpWallDist > 0) lineHeight = Math.abs((int)(height / perpWallDist));
@@ -95,7 +95,7 @@ public class Screen {
       if(drawStart < 0)
        drawStart = 0;
       int drawEnd = lineHeight/2 + height/2;
-      if(drawEnd >= height) 
+      if(drawEnd >= height)
        drawEnd = height - 1;
       //add a texture
       int texNum = map[mapX][mapY] - 1;

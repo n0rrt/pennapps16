@@ -7,14 +7,14 @@ public class Texture {
  public int[] pixels;
  private String loc;
  public final int SIZE;
- 
+
  public Texture(String location, int size) {
   loc = location;
   SIZE = size;
   pixels = new int[SIZE * SIZE];
   load();
  }
- 
+
  private void load() {
   try {
    BufferedImage image = ImageIO.read(new File(loc));
@@ -25,7 +25,7 @@ public class Texture {
    e.printStackTrace();
   }
  }
- 
+
  public static Texture wood = new Texture("res/vent.png", 64);
  public static Texture brick = new Texture("res/metal.png", 64);
  public static Texture bluestone = new Texture("res/window.png", 64);

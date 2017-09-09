@@ -6,9 +6,6 @@ import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 public class Game extends JFrame implements Runnable{
-  public static void main(String [] args) {
-    Game game = new Game();
-  }
   private static final long serialVersionUID = 1L;
   //sets map size
   public int mapWidth = 15;
@@ -17,6 +14,8 @@ public class Game extends JFrame implements Runnable{
   private boolean running;
   private BufferedImage image;
   public int[] pixels;
+  public ArrayList<Texture> textures;
+  public Camera camera;
   public Screen screen;
   public static int[][] map =
   {
@@ -40,8 +39,15 @@ public class Game extends JFrame implements Runnable{
   public Game() {
     thread = new Thread(this);
     image = new BufferedImage(1280, 720, BufferedImage.TYPE_INT_RGB);
-    screen = new Screen(map, mapWidth, mapHeight, textures, 640, 480);
+    screen = new Screen(map, mapWidth, mapHeight, textures, 1280, 720);
+    camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
+    addKeyListener(camera);
     pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+    textures = new ArrayList<Texture>();
+    textures.add(Texture.metal);
+    textures.add(Texture.window);
+    textures.add(Texture.vent);
+    textures.add(Texture.console);
     setSize(1280, 720);
     setResizable(false);
     setTitle("3D Engine");
@@ -92,5 +98,9 @@ public class Game extends JFrame implements Runnable{
         delta--;
       }
       render();
-    }}
+    }
+  }
+  public static void main(String [] args) {
+    Game game = new Game();
+  }
 }

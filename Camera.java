@@ -1,4 +1,5 @@
-import java.awt.event.KeyEvent;<br>import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 public class Camera implements Keylistener {
   public double xPos, yPos, xDir, yDir, xPlane, yPlane;
   public boolean left, right, forward, back;
@@ -11,8 +12,6 @@ public class Camera implements Keylistener {
     yDir = yd;
     xPlane = xp;
     yPlane = yp;
-    camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
-    addKeyListener(camera);
   }
   public void keyPressed(KeyEvent key) {
     if((key.getKeyCode() == KeyEvent.VK_LEFT))

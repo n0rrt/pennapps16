@@ -3,11 +3,6 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 public class Texture{
-  public ArrayList<Texture> textures;
-  public static Texture metal = new Texture("res/metal.png", 64);
-  public static Texture window = new Texture("res/window.png", 64);
-  public static Texture vent = new Texture("res/vent.png", 64);
-  public static Texture console = new Texture("res/console.png", 64);
   public int[] pixels;
   private String loc;
   public final int SIZE;
@@ -16,11 +11,7 @@ public class Texture{
     SIZE = size;
     pixels = new int[SIZE * SIZE];
     load();
-    textures = new ArrayList<Texture>();
-    textures.add(Texture.metal);
-    textures.add(Texture.window);
-    textures.add(Texture.vent);
-    textures.add(Texture.console);
+
   }
   public void load(){
     try{
@@ -33,4 +24,8 @@ public class Texture{
         e.printStackTrace();
     }
   }
+  public static Texture metal = new Texture("res/metal.png", 64);
+  public static Texture window = new Texture("res/window.png", 64);
+  public static Texture vent = new Texture("res/vent.png", 64);
+  public static Texture console = new Texture("res/console.png", 64);
 }

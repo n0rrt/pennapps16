@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.DataBufferInt;
 public class Game extends JFrame implements Runnable{
+ BufferedImage img;
  private static final long serialVersionUID = 1L;
  public int mapWidth = 15;
  public int mapHeight = 15;
@@ -58,6 +59,10 @@ public class Game extends JFrame implements Runnable{
   setBackground(Color.black);
   setLocationRelativeTo(null);
   setVisible(true);
+  try {
+      img = ImageIO.read(new File("res/gun-basic.png"));
+    }
+    catch (IOException e) {}
   start();
  }
  private synchronized void start() {
@@ -80,6 +85,7 @@ public class Game extends JFrame implements Runnable{
   }
   Graphics g = bs.getDrawGraphics();
   g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
+  g.drawImage(img, 478, 417, 325, 300, null);
   g.setColor(Color.RED);
   g.fillRect(1040,625, 175, 30);
   bs.show();

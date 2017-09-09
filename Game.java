@@ -17,7 +17,7 @@ public class Game extends JFrame implements Runnable{
   private boolean running;
   private BufferedImage image;
   public int[] pixels;
-  public static int[][] map = 
+  public static int[][] map =
   {
     {1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
     {1,0,0,0,0,0,0,0,2,0,0,0,0,0,2},
@@ -85,13 +85,9 @@ public class Game extends JFrame implements Runnable{
       delta = delta + ((now-lastTime) / ns);
       lastTime = now;
       while(delta >= 1) {
+        camera.update(map);
         delta--;
       }
       render();
     }}
 }
-    
-  
-    
-    
-    

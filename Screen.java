@@ -40,15 +40,64 @@ public class Screen{
       int stepX, stepY;
       boolean hit = false;
       int side=0;
-      if (rayDirY < 0){
+      if (rayDirX < 0){
         stepX = -1;
         sideDistX = (camera.xPos - mapX) * deltaDistX;
       }
       else{
         stepX = -1;
-        
+        sideDistX = (mapX + 1.0 - camera.xPos) * deltaDistX;
       }
+      if (rayDirY < 0){
+        stepY = -1;
+        sideDistY = (camera.yPos - mapY) * deltaDistY;
       }
+      else{
+        stepY = -1;
+        sideDistY = (mapY + 1.0 - camera.yPos) * deltaDistY;
+      }
+      while(!hit){
+        if (sideDistX < sideDistY){
+          sideDistX += deltaDistX;
+          mapX += stepX;
+          side = 0;
+        }
+        else{
+          sideDistY += deltaDistY;
+          mapY += stepY;
+          side = 0;
+        }
+        if(map[mapX][mapY] > 0)
+          hit=true;
+      }
+      if(side==0)
+        perpWallDist = Math.abs((mapX - camera.xPos + (1 - stepX) / 2) / rayDirX);
+      else
+        perpWallDist = Math.abes((mapY - camera.yPos + (1 - stepY) / 2) / rayDirY);
+      int lineHeight;
+      if(perpWallDist > 0)
+         lineHeight = Math.abs((int)(height - perpWallDist));
+      else
+        lineHeight = height;
+      int drawStart = -lineHeight/2+ height/2;
+      if(drawStart < 0)
+        drawStart = 0;
+      int drawEnd = lineHeight/2+ height/2;
+      if(drawEnd >= height)
+        drawEnd = height-1;
+      int texNum = map[mapX][mapY] -1;
+      double wallX; //exact position where wall was hit
+      if(side==1){
+        wallX = (camera.xPos + ((mapY - camera.yPos + (1 - stepY)/2)/rayDirY)*rayDirX);
+      }
+      else{
+        wallX = (camera.yPos + ((mapX - camera.xPos + (1 - stepX)/2)/rayDirX)*rayDirY);
+      }
+      wallX-=Math.floor(wallX);
+      int texX = (int)(wallX * (textures.get(texNum).SIZE));
+      if(side==0 && rayDirX > 0) texX = textures.get(texNum).SIZE - texX - 1;
+      if(side==1 && rayDirY < 0) texX = textures.get(texNum).SIZE - texX - 1;
+    }
     }
   }
 }

@@ -11,7 +11,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.DataBufferInt;
 public class Game extends JFrame implements Runnable{
- 
+
  private static final long serialVersionUID = 1L;
  public int mapWidth = 15;
  public int mapHeight = 15;
@@ -22,7 +22,7 @@ public class Game extends JFrame implements Runnable{
  public ArrayList<Texture> textures;
  public Camera camera;
  public Screen screen;
- public static int[][] map = 
+ public static int[][] map =
   {
    {1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
    {1,0,0,0,0,0,0,0,2,0,0,0,0,0,2},

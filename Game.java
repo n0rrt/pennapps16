@@ -12,6 +12,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.DataBufferInt;
 public class Game extends JFrame implements Runnable{
  BufferedImage img;
+ BufferedImage img1;
  private static final long serialVersionUID = 1L;
  public int mapWidth = 15;
  public int mapHeight = 15;
@@ -21,7 +22,9 @@ public class Game extends JFrame implements Runnable{
  public int[] pixels;
  public ArrayList<Texture> textures;
  public Camera camera;
+ public int blasterammolevel = 100;
  public Screen screen;
+ //map layout
  public static int[][] map =
   {
    {1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
@@ -40,6 +43,8 @@ public class Game extends JFrame implements Runnable{
    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
    {1,1,1,1,1,1,1,4,4,4,4,4,4,4,4}
   };
+ 
+ //make sure all resolution values are the same
  public Game() {
   thread = new Thread(this);
   image = new BufferedImage(1280, 720, BufferedImage.TYPE_INT_RGB);
@@ -59,16 +64,20 @@ public class Game extends JFrame implements Runnable{
   setBackground(Color.black);
   setLocationRelativeTo(null);
   setVisible(true);
+  //loads blaster sprites
   try {
       img = ImageIO.read(new File("res/gun-basic.png"));
+      img1 = ImageIO.read(new File("res/gun-shoot.png"));
     }
     catch (IOException e) {}
   start();
  }
+ 
  private synchronized void start() {
   running = true;
   thread.start();
  }
+ 
  public synchronized void stop() {
   running = false;
   try {
@@ -77,6 +86,8 @@ public class Game extends JFrame implements Runnable{
    e.printStackTrace();
   }
  }
+
+ //main renderer
  public void render() {
   BufferStrategy bs = getBufferStrategy();
   if(bs == null) {
@@ -85,14 +96,22 @@ public class Game extends JFrame implements Runnable{
   }
   Graphics g = bs.getDrawGraphics();
   g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
+  //spaceblaster render
   g.drawImage(img, 478, 417, 325, 300, null);
-  g.setColor(Color.RED);
-  g.fillRect(1040,625, 175, 30);
+  g.setColor(Color.BLUE);
+  g.drawRect(1039, 624, 176, 31);
+  g.setColor(Color.GREEN);
+  g.fillRect(1040, 625, 175, 30);
+  g.setColor(Color.BLUE);
+  g.drawString("BLASTER AMMO", 1050, 645);
   bs.show();
  }
+
+ //run method
  public void run() {
   long lastTime = System.nanoTime();
-  final double ns = 1000000000.0 / 60.0;//60fps
+  //60fps
+  final double ns = 1000000000.0 / 60.0;
   double delta = 0;
   requestFocus();
   while(running) {
@@ -110,7 +129,8 @@ public class Game extends JFrame implements Runnable{
   }
  }
 
+ //main method
  public static void main(String [] args) {
-  Game game = new Game();
- }
+    Game game = new Game();
+}
 }

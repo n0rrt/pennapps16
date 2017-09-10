@@ -1,7 +1,6 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-
+//change name to 'player' later
 public class Camera implements KeyListener{
  public double xPos, yPos, xDir, yDir, xPlane, yPlane;
  public boolean left, right, forward, back;
@@ -14,6 +13,7 @@ public class Camera implements KeyListener{
   yDir = yd;
   xPlane = xp;
   yPlane = yp;
+  
  }
  public void keyPressed(KeyEvent key) {
   if((key.getKeyCode() == KeyEvent.VK_LEFT))
@@ -68,6 +68,8 @@ public class Camera implements KeyListener{
  }
  public void keyTyped(KeyEvent arg0) {
   
-
  }
-}
+ }
+
+   
+
